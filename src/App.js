@@ -1,28 +1,34 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Container from './Container';
+import Slider from './Slider';
+import Header from './Header';
+import Footer from './Footer';
+// import './App.css';
+import './netflix.css';
+
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+    
+    render() {
+        const categories = [
+            {'name': 'Upcoming', 'category':'upcoming'},
+            {'name': 'Popular', 'category':'popular'},
+            {'name': 'Top Rated', 'category':'top_rated'},
+            {'name': 'Now Playing', 'category':'now_playing'}
+        ]
+        return (
+            <div className="App">
+                <Header />
+                <Slider />
+                {
+                    categories.map(category => (
+                        <Container key={category} className='row' category={category} />
+                    ))
+                }
+                <Footer />
+            </div>
+        );
+    }
 }
 
 export default App;
